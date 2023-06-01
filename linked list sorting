@@ -1,0 +1,98 @@
+//Read the first element from the file and sort the elements and display
+
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+    int data ;
+    struct node * next ;
+} *head , *newnode, *temp, *temp1;
+
+struct node * insert (int n );
+void display (struct node * head );
+struct node * sort (int n );
+
+int main ()
+{
+    FILE * fp ;
+    fp = fopen ("text.txt" , "r");
+
+    int n , ele;
+
+    printf("enter the elements in the list ");
+    fscanf (fp , "%d", &n);
+
+    head = NULL;
+    printf("enter the element in the list ");
+    for (int i =0; i<n; i++)
+    {
+        fscanf (fp , "%d",&ele );
+        head = insert (ele);
+    }
+    printf("current ll is : ");
+    display (head );
+    printf("\n");
+
+    head = sort (n);
+
+    printf("the sorted list is : ");
+    display(head );
+    return 0;
+}
+
+struct node * insert (int n )
+{
+    newnode = (struct node*)malloc (sizeof(struct node));
+
+    newnode->data = n ;
+
+    if(head == NULL)
+    {
+        head = newnode;
+        newnode->next = NULL;
+    }
+
+    else
+    {
+        temp = head ;
+
+        while (temp->next != NULL)
+        {
+            temp = temp->next ;
+        }
+
+        temp->next = newnode ;
+        newnode ->next = NULL;
+    }
+
+    return head ;
+}
+
+void display (struct node * head )
+{
+    temp =head ;
+    while (temp!=NULL)
+    {
+        printf("%d ", temp->data );
+        temp = temp->next ;
+    }
+}
+
+struct node * sort (int n )
+{
+    int t ;
+    for (int i = 0 ; i<n; i++)
+    {
+        for (temp = head , temp1 = temp->next ; temp1 != NULL ; temp = temp->next , temp1= temp1->next )
+        {
+            if(temp->data  > temp1->data )
+            {
+                t  = temp->data ;
+                temp->data = temp1->data ;
+                temp1->data = t;
+            }
+        }
+    }
+
+    return head ;
+}
