@@ -1,0 +1,72 @@
+//Read the first element from the text file and display all those elements
+
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+    int data ;
+    struct node * next ;
+} *head , *newnode, *temp, *temp1;
+
+struct node * insert (int n );
+void display (struct node * head );
+
+
+int main ()
+{
+    FILE * ft ;
+    ft = fopen ("text.txt" , "r");
+
+    int n , e;
+
+    fscanf (ft , "%d", &n);
+
+    head = NULL;
+    for (int i =0; i<n; i++)
+    {
+        fscanf (ft , "%d",&e );
+        head = insert (e);
+    }
+    printf("the current linked list is : ");
+    display (head );
+    printf("\n");
+
+}
+
+struct node * insert (int n )
+{
+    newnode = (struct node*)malloc (sizeof(struct node));
+
+    newnode->data = n ;
+
+    if(head == NULL)
+    {
+        head = newnode ;
+        newnode->next = NULL;
+    }
+
+    else
+    {
+        temp = head ;
+
+        while (temp->next != NULL)
+        {
+            temp = temp->next ;
+        }
+
+        temp->next = newnode ;
+        newnode ->next = NULL;
+    }
+
+    return head ;
+}
+
+void display (struct node * head )
+{
+    temp =head ;
+    while (temp!=NULL)
+    {
+        printf("%d ", temp->data );
+        temp = temp->next ;
+    }
+}
