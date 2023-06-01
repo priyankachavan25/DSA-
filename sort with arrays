@@ -1,0 +1,44 @@
+//write a c code to take numbers from file 1 and sort the array and store the sorted array in file 2
+
+#include<stdio.h>
+
+int main()
+{
+    int n,i,x,j,temp;
+    int arr[1000];
+
+    FILE *fp;
+    fp=fopen("file.txt","r+");// Opening first file for reading
+    printf("Enter the number of numbers to be taken from the file 1 to sort\n");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        fscanf(fp,"%d",&x);// read n numbers from file
+        arr[i]=x;
+    }
+    for(i=0;i<n;i++)//bubble sort
+    {
+        for(j=0;j<n;j++)
+        {
+            if(arr[j+1]>arr[j])
+            {
+                temp=arr[j+1];
+                arr[j+1]=arr[j];
+                arr[j]=temp;
+            }
+        }
+    }
+    fclose(fp);//closing the first file
+    for(i=0;i<n;i++)
+    {
+        printf("%d\n",arr[i]);
+    }
+    fp=fopen("file1.txt","r+");// Opening second file for writing the sorted numbers from array
+      for(i=0;i<n;i++)
+    {
+        x=arr[i];
+
+        fprintf(fp,"%d\n",x);
+    }
+    fclose(fp);//closing the second file
+}
