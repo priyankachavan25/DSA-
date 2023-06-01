@@ -1,0 +1,89 @@
+#include <stdio.h>
+#define<limits.h>
+void initializeStack(Stack* stack);
+int isFull(Stack* stack);
+void push(Stack* stack, int value);
+int pop(Stack* stack);
+int isEmpty(Stack* stack);
+int factorial(int n);
+
+#define STACK_SIZE 200
+
+typedef struct 
+{
+    int data[STACK_SIZE];
+    int top;
+} Stack;
+
+int main()
+ {
+    int n;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+
+    int fact = factorial(n);
+    printf("Factorial of %d is: %d\n", n, fact);
+
+    return 0;
+}
+void initializeStack(Stack* stack)
+ {
+    stack->top = -1;
+}
+
+int isFull(Stack* stack)
+ {
+    return stack->top == STACK_SIZE - 1;
+}
+
+void push(Stack* stack, int value)
+ {
+    if (isFull(stack)) {
+        printf("Stack overflow!\n");
+        return;
+    }
+
+    stack->data[++stack->top] = value;
+}
+
+int pop(Stack* stack)
+ {
+    if (isEmpty(stack)) {
+        printf("Stack underflow!\n");
+        return -1; 
+    }
+
+    return stack->data[stack->top--];
+}
+int isEmpty(Stack* stack)
+ {
+    return stack->top == -1;
+}
+
+
+int factorial(int n) 
+{
+    Stack stack;
+    initializeStack(&stack);
+    push(&stack, n);
+
+    int result = 1;
+
+    while (!isEmpty(&stack)) 
+       {
+        int value = pop(&stack);
+
+        if (value == 1)
+        {
+            continue;
+        } else 
+         {
+            result *= value;
+            push(&stack, value - 1);
+        }
+    }
+
+    return result;
+}
+
+
