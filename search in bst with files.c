@@ -99,6 +99,3 @@ int main() {
     return 0;
 }
 
-/*In this code, random numbers are generated and saved to a file named random.txt using the fprintf function. The numbers from the file are then inserted into the BST. The user is prompted to enter a key to search in the BST, and the search function is called to perform the search operation. The search result, either "Found" or "Not Found", is saved in a file named search.txt using the fprintf function.
-
-Make sure to create an empty file named random.txt in the same directory as the code before running it.*/
