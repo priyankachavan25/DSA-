@@ -101,6 +101,4 @@ int main() {
 }
 
 
-/*In this code, the tree operations (insertion, inorder traversal, preorder traversal, postorder traversal) are implemented in functions that take an additional FILE* parameter. The random numbers are generated and saved to a file named random.txt using the fprintf function. The numbers from the file are then inserted into the tree. The results of each operation are written to separate files (inorder.txt, preorder.txt, postorder.txt).
 
-Make sure to create an empty file named random.txt in the same directory as the code*/
