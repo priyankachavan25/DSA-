@@ -81,12 +81,3 @@ int main() {
     return 0;
 }
 
-/*In this code, after generating the adjacency matrix and adjacency list based on user input, the saveAdjacencyMatrix and saveAdjacencyList functions are defined to save the respective data structures to files.
-
-The saveAdjacencyMatrix function saves the adjacency matrix to a file named "adjacency_matrix.txt". It opens the file in write mode, iterates over the matrix, and writes each element to the file.
-
-The saveAdjacencyList function saves the adjacency list to a file named "adjacency_list.txt". It opens the file in write mode, iterates over the list, and writes each vertex and its adjacent vertices to the file.
-
-In the main function, after generating the adjacency matrix and adjacency list, the code calls the saveAdjacencyMatrix function to save the matrix to a file, and the saveAdjacencyList function to save the list to a file. It then prints a message indicating that the files have been saved.
-
-When you run this code, it will prompt you to enter the number of vertices, the number of edges, and the edges (vertex1 and vertex2) one by one. After you provide the input, it will generate the adjacency matrix and adjacency list, save them to separate files ("adjacency_matrix.txt" and "adjacency_list.txt"), and display messages indicating the successful file saving.*/
